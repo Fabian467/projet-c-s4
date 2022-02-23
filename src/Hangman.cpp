@@ -8,7 +8,8 @@ std::string choix_du_mot(){
 }
 
 bool lettres_decouvertes(std::string word){
-    
+    std::vector<std::string> Complete_word;
+    for (size_t i = 0; i<word)
 }
 
 bool bonne_lettre(char a){
