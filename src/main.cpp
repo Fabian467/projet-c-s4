@@ -38,11 +38,10 @@ int main()
     int y = rand(0,100);
     int x = nombre_utilisateur();
 
-     if (!comparaison(x,y))
+     while (!comparaison(x,y))
     {
         x = nombre_utilisateur();
         comparaison(x,y);
     }
-    
     std::cout << "Bien joue !" << std::endl;
 }
