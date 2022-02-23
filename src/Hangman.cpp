@@ -1,14 +1,15 @@
 #include "Hangman.h"
 
+
 std::string choix_du_mot(){
     std::string liste_mots[5] = {"Code", "Jules", "Programmation", "Erreur", "Joie et volupte"};
     int x = rand(0,4);
     return (liste_mots[x]);
 }
 
-/*bool lettres_decouvertes(std::string word){
-    bool *lettres_decouverte[word.length()] = 0;
-}*/
+bool lettres_decouvertes(std::string word){
+    
+}
 
 bool bonne_lettre(char a){
     char b;
