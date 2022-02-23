@@ -28,8 +28,119 @@ Alternatively you can just create a *build* folder at the root of this project, 
 
 [Check this out](https://julesfouchy.github.io/Learn--Clean-Code-With-Cpp/lessons/static-analysis-and-sanitizers) to learn why you would want to use static analysis and how to do it.
 
-# Avancée
+# Progress
 
-- [x]
-- [ ] Mercury
+Level 1
+
+- [x] Install a compiler
+
+- [x] Use an IDE
+
+- [x] Use Git
+
+- [x] Use a debugger
+
+- [x] Use a formatting tool
+
+- [x] Use static analysers
+
+- [x] Naming
+
+- [x] Stack vs Heap
+
+- [x] Consistency in style
+
+Level 2
+
+- [x] Make it work, then make it good
+
+- [x] Prefer free functions
+
+- [ ] Design cohesive classes
+
+- [ ] Use structs to group data
+
+- [ ] Write small functions
+
+- [ ] DRY: Don't Repeat Yourself
+
+- [ ] Enums
+
+- [ ] Split problems in small pieces
+
+- [ ] Composition over Inheritance
+
+Level 3
+
+- [ ] std::vector
+
+- [ ] Documentation
+
+- [ ] Use libraries
+
+- [ ] assert
+
+- [ ] auto
+
+- [ ] Testing
+
+- [ ] Type design
+
+- [ ] Dependencies
+
+- [ ] Lambda functions
+
+- [ ] Master your IDE
+
+- [ ] std::optional
+
+- [ ] Single Source of Truth
+
+- [ ] Strong Typing
+
+- [ ] Code reviews
+
+- [ ] const
+
+- [ ] Don't overfocus on performance
+
+- [ ] Git submodules
+
+- [ ] STL algorithms
+
+- [ ] Debug vs Release
+
+- [ ] Immediately Invoked Function
+
+- [ ] Markdown
+
+- [ ]Range-based for loop
+
+- [ ] Smart Pointers
+
+- [ ] std::function
+
+- [ ] Error Handling
+
+- [ ] Git Pull Requests
+
+- [ ] Advanced Git features
+
+- [ ] CMake
+
+- [ ] Functional programming
+
+- [ ] Move semantics
+
+- [ ] The Rule of 5
+
+- [ ] State and Strategy
+
+- [ ] std::variant
+
+- [ ] Cache and Branches
+
+- [ ] Multithreading
+
+- [ ] Polymorphism
 
