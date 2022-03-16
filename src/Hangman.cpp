@@ -62,12 +62,6 @@ bool Is_Char_In_Word(char a, std::string word){
         if (int(a) == int(word[i]) || int(a)+32 == int(word[i]) || int(a)-32 == int(word[i])){
            return 1;
         }
-        /*else if (int(a)+32 == int(word[i])) {
-            return 1;
-        }
-        else if (int(a)-32 == int(word[i])) {
-            return 1;
-        }*/
     }
     return 0;
 }
@@ -81,6 +75,7 @@ bool Victory_condition (std::vector<bool> Complete_word){
     return 1;
 }
 
+// ---------- à re-séparer en fonctions --------
 void Hangman_loop(){
     std::string mot = choix_du_mot();
     std::vector<bool> Complete_word = Vecteur_mot(mot);

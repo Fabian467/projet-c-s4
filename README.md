@@ -56,17 +56,17 @@ Level 2
 
 - [x] Prefer free functions
 
-- [ ] Design cohesive classes
+- [x] Design cohesive classes
 
-- [ ] Use structs to group data
+- [x] Use structs to group data
 
-- [ ] Write small functions
+- [x] Write small functions
 
-- [ ] DRY: Don't Repeat Yourself
+- [x] DRY: Don't Repeat Yourself
 
-- [ ] Enums
+- [x] Enums
 
-- [ ] Split problems in small pieces
+- [x] Split problems in small pieces
 
 - [ ] Composition over Inheritance
 
