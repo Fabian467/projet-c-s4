@@ -1,6 +1,4 @@
 #include "Hangman.h"
-#include <algorithm>
-
 
 std::string choix_du_mot(){
     std::string liste_mots[5] = {"Code", "Jules", "Prog", "Erreur", "Joie"};
@@ -83,7 +81,7 @@ bool Victory_condition (std::vector<bool> Complete_word){
     return 1;
 }
 
-void Hangman(){
+void Hangman_loop(){
     std::string mot = choix_du_mot();
     std::vector<bool> Complete_word = Vecteur_mot(mot);
     std::cout << std::endl;

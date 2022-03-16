@@ -3,5 +3,5 @@
 
 int main(){
     //GuessTheNumber();
-    Hangman();
+    Hangman_loop();
 }
