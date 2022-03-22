@@ -1,15 +1,15 @@
 #include "Hangman.h"
 
 std::string choix_du_mot(){
-    std::string liste_mots[5] = {"Code", "Jules", "Prog", "Erreur", "Joie"};
+    std::string liste_mots[] = {"Code", "Jules", "Prog", "Erreur", "Joie"};
     int x = rand(0,4);
     return (liste_mots[x]);
 }
 
-std::vector<bool> Vecteur_mot(std::string word){
+std::vector<bool> mot_to_boolean(std::string word){
     std::vector<bool> Complete_word;
     for (size_t i = 0; i<word.length(); i++){
-        if (int(word[i]) != 32){
+        if (int(word[i]) != 32){ //This is used so that we can put words with spaces
             Complete_word.push_back(0);
             std::cout << Complete_word[i];
         }
@@ -21,10 +21,10 @@ std::vector<bool> Vecteur_mot(std::string word){
 
 void Affichage_tirets(std::string word, std::vector<bool> Complete_word){
     for (size_t i=0; i<word.length(); i++){
-        if (int(word[i]) != 32 && Complete_word[i] == 0){
+        if (int(word[i]) != 32 && Complete_word[i] == false){
             std::cout << "_";
         }
-        else if (int(word[i]) != 32 && Complete_word[i] == 1)
+        else if (int(word[i]) != 32 && Complete_word[i] == true)
         {
              std::cout << word[i];
         }
@@ -41,12 +41,12 @@ char demande_lettre(){
     return (user_input);
 }
 
-std::vector<bool> Change_boolean_list(char a, std::string word, std::vector<bool> Complete_word, bool char_in_word){
+std::vector<bool> Update_boolean_mot(char a, std::string word, std::vector<bool> Complete_word, bool char_in_word){
     if (char_in_word){    
         for (size_t i=0; i<word.length(); i++){
              if (int(a) == int(word[i]) || int(a)+32 == int(word[i]) || int(a)-32 == int(word[i])){
-                 if(Complete_word[i] == 0){
-                    Complete_word[i] = 1;
+                 if(Complete_word[i] == false){
+                    Complete_word[i] = true;
                  }
                  else{
                      std::cout << "Tu as deja trouvé cette lettre, essaies-en une autre!" << std::endl;
@@ -68,17 +68,17 @@ bool Is_Char_In_Word(char a, std::string word){
 
 bool Victory_condition (std::vector<bool> Complete_word){
     for (size_t i=0; i<Complete_word.size(); i++){
-        if (Complete_word[i]==0){
-            return 0;
+        if (Complete_word[i]==false){
+            return false;
         }
     }
-    return 1;
+    return true;
 }
 
 // ---------- à re-séparer en fonctions --------
 void Hangman_loop(){
     std::string mot = choix_du_mot();
-    std::vector<bool> Complete_word = Vecteur_mot(mot);
+    std::vector<bool> Complete_word = mot_to_boolean(mot);
     std::cout << std::endl;
     Affichage_tirets(mot, Complete_word);
     int vie = 10;
@@ -92,7 +92,7 @@ void Hangman_loop(){
 
         }
         std::cout << std::endl;
-        Complete_word = Change_boolean_list(User_input,mot, Complete_word, letter_in_word);
+        Complete_word = Update_boolean_mot(User_input,mot, Complete_word, letter_in_word);
         Affichage_tirets(mot,Complete_word);
         std::cout << std::endl;
         if (Victory_condition(Complete_word)){
