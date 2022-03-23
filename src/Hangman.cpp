@@ -1,12 +1,12 @@
 #include "Hangman.h"
 
-std::string choix_du_mot(){
+std::string Choose_word(){
     std::string liste_mots[] = {"Code", "Jules", "Prog", "Erreur", "Joie"};
     int x = rand(0,4);
     return (liste_mots[x]);
 }
 
-std::vector<bool> mot_to_boolean(std::string word){
+std::vector<bool> Word_to_boolean(std::string word){
     std::vector<bool> Complete_word;
     for (size_t i = 0; i<word.length(); i++){
         if (int(word[i]) != 32){ //This is used so that we can put words with spaces
@@ -19,7 +19,7 @@ std::vector<bool> mot_to_boolean(std::string word){
 
 
 
-void Affichage_tirets(std::string word, std::vector<bool> Complete_word){
+void Word_to_dash(std::string &word, std::vector<bool> &Complete_word){
     for (size_t i=0; i<word.length(); i++){
         if (int(word[i]) != 32 && Complete_word[i] == false){
             std::cout << "_";
@@ -34,14 +34,14 @@ void Affichage_tirets(std::string word, std::vector<bool> Complete_word){
     }
 }
 
-char demande_lettre(){
+char Ask_letter(){
     std::cout << "Quelle lettre?" << std::endl;
     char user_input;
     std::cin >> user_input;
     return (user_input);
 }
 
-std::vector<bool> Update_boolean_mot(char a, std::string word, std::vector<bool> Complete_word, bool char_in_word){
+std::vector<bool> Update_liste_boolean(char a, std::string word, std::vector<bool> Complete_word, bool char_in_word){
     if (char_in_word){    
         for (size_t i=0; i<word.length(); i++){
              if (int(a) == int(word[i]) || int(a)+32 == int(word[i]) || int(a)-32 == int(word[i])){
@@ -49,7 +49,7 @@ std::vector<bool> Update_boolean_mot(char a, std::string word, std::vector<bool>
                     Complete_word[i] = true;
                  }
                  else{
-                     std::cout << "Tu as deja trouvé cette lettre, essaies-en une autre!" << std::endl;
+                     std::cout << "Tu as deja trouv" << "\202" << " cette lettre, essaies-en une autre!" << std::endl;
                  }
             }
         }
@@ -75,16 +75,18 @@ bool Victory_condition (std::vector<bool> Complete_word){
     return true;
 }
 
+
+
 // ---------- à re-séparer en fonctions --------
 void Hangman_loop(){
-    std::string mot = choix_du_mot();
-    std::vector<bool> Complete_word = mot_to_boolean(mot);
+    std::string mot = Choose_word();
+    std::vector<bool> Liste_boolean = Word_to_boolean(mot);
     std::cout << std::endl;
-    Affichage_tirets(mot, Complete_word);
+    Word_to_dash(mot, Liste_boolean);
     int vie = 10;
     bool letter_in_word;
     while(vie != 0){
-        auto User_input = demande_lettre();
+        auto User_input = Ask_letter();
         letter_in_word = Is_Char_In_Word(User_input, mot);
         if(!letter_in_word){
             vie = vie-1;
@@ -92,10 +94,10 @@ void Hangman_loop(){
 
         }
         std::cout << std::endl;
-        Complete_word = Update_boolean_mot(User_input,mot, Complete_word, letter_in_word);
-        Affichage_tirets(mot,Complete_word);
+        Liste_boolean = Update_liste_boolean(User_input,mot, Liste_boolean, letter_in_word);
+        Word_to_dash(mot,Liste_boolean);
         std::cout << std::endl;
-        if (Victory_condition(Complete_word)){
+        if (Victory_condition(Liste_boolean)){
             std::cout << "BRAVO, TU AS TROUVE!" << std::endl;
             break;
         }
