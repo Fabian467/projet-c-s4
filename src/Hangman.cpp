@@ -1,15 +1,15 @@
 #include "Hangman.h"
 
 std::string Choose_word(){
-    std::string liste_mots[] = {"Code", "Jules", "Prog", "Erreur", "Joie"};
-    int x = rand(0,4);
+    std::vector<std::string> liste_mots = {/*"Code", "Jules", "Prog", "Erreur", */"Joie", "Bonjour ca va", "Bonjour ca va", "Bonjour ca va", "Bonjour ca va"};
+    int x = rand(0,liste_mots.size());
     return (liste_mots[x]);
 }
 
 std::vector<bool> Word_to_boolean(std::string word){
     std::vector<bool> Complete_word;
     for (size_t i = 0; i<word.length(); i++){
-        if (int(word[i]) != 32){ //This is used so that we can put words with spaces
+        if (word[i] != ' '){
             Complete_word.push_back(0);
             std::cout << Complete_word[i];
         }
@@ -19,12 +19,12 @@ std::vector<bool> Word_to_boolean(std::string word){
 
 
 
-void Word_to_dash(std::string &word, std::vector<bool> &Complete_word){
+void Word_to_dash(const std::string &word, const std::vector<bool> &Complete_word){
     for (size_t i=0; i<word.length(); i++){
-        if (int(word[i]) != 32 && Complete_word[i] == false){
+        if (word[i] != ' ' && Complete_word[i] == false){
             std::cout << "_";
         }
-        else if (int(word[i]) != 32 && Complete_word[i] == true)
+        else if (word[i] != ' ' && Complete_word[i] == true)
         {
              std::cout << word[i];
         }
@@ -44,7 +44,7 @@ char Ask_letter(){
 std::vector<bool> Update_liste_boolean(char a, std::string word, std::vector<bool> Complete_word, bool char_in_word){
     if (char_in_word){    
         for (size_t i=0; i<word.length(); i++){
-             if (int(a) == int(word[i]) || int(a)+32 == int(word[i]) || int(a)-32 == int(word[i])){
+             if (a == word[i] || int(a)+32 == int(word[i]) || int(a)-32 == int(word[i])){
                  if(Complete_word[i] == false){
                     Complete_word[i] = true;
                  }
@@ -59,7 +59,7 @@ std::vector<bool> Update_liste_boolean(char a, std::string word, std::vector<boo
 
 bool Is_Char_In_Word(char a, std::string word){
     for (size_t i=0; i<word.length(); i++){
-        if (int(a) == int(word[i]) || int(a)+32 == int(word[i]) || int(a)-32 == int(word[i])){
+        if (a == word[i] || int(a)+32 == int(word[i]) || int(a)-32 == int(word[i])){
            return 1;
         }
     }
