@@ -1,7 +1,7 @@
 #include "Hangman.h"
 
 std::string Choose_word(){
-    std::vector<std::string> liste_mots = {/*"Code", "Jules", "Prog", "Erreur", */"Joie", "Bonjour ca va", "Bonjour ca va", "Bonjour ca va", "Bonjour ca va"};
+    std::vector<std::string> liste_mots = {"Code", "Jules", "Prog", "Erreur", "Joie"/*, "Bonjour ca va", "Bonjour ca va", "Bonjour ca va", "Bonjour ca va"*/};
     int x = rand(0,liste_mots.size());
     return (liste_mots[x]);
 }
@@ -9,7 +9,11 @@ std::string Choose_word(){
 std::vector<bool> Word_to_boolean(std::string word){
     std::vector<bool> Complete_word;
     for (size_t i = 0; i<word.length(); i++){
-        if (word[i] != ' '){
+        if (word[i] == ' '){
+            Complete_word.push_back(1);
+            std::cout << Complete_word[i];
+        }
+        else{
             Complete_word.push_back(0);
             std::cout << Complete_word[i];
         }
@@ -77,7 +81,6 @@ bool Victory_condition (std::vector<bool> Complete_word){
 
 
 
-// ---------- à re-séparer en fonctions --------
 void Hangman_loop(){
     std::string mot = Choose_word();
     std::vector<bool> Liste_boolean = Word_to_boolean(mot);

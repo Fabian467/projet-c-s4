@@ -1,9 +1,9 @@
 #include "GuessTheNumber.h"
 #include "Hangman.h"
+#include "Menu.h"
 
 
 int main(){
-    //GuessTheNumber();
-    Hangman_loop();
+    menu_loop();
 }
 
