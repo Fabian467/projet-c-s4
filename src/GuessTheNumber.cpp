@@ -32,7 +32,6 @@ bool comparaison(int x,int y){
     return 1;
 }
 
-
 void GuessTheNumber()
 { 
     int y = rand(0,100);
